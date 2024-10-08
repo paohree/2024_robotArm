@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat with GPT</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        #chat-box {
+            width: 80%;
+            max-width: 800px; /* 크기 조정 */
+            height: 500px; /* 높이 조정 */
+            border: 1px solid #ccc;
+            padding: 8px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+        #transcript {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .user-message, .assistant-message {
+            padding: 8px 10px;
+            margin: 5px;
+            border-radius: 8px;
+            clear: both;
+            font-size: 16px; /* 폰트 크기 조정 */
+            font-weight: bold;
+        }
+        .user-message {
+            background-color: #f1f1f1;
+            text-align: left;
+        }
+        .assistant-message {
+            background-color: #add8e6;
+            text-align: right;
+        }
+        #input-area {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 400px;
+        }
+        #userInput {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-box"></div>
+    <div id="transcript" style="margin-bottom: 20px;">Listening...</div>
+    <div id="input-area">
+        <input type="text" id="userInput" placeholder="Enter your message">
+        <button onclick="sendMessage()">Text Send</button>
+        <button id="start-btn" onclick="startRecognition()">Voice Send</button>
+    </div>
+
+    <script src="/static/script.js"></script>
+    <script src="/static/speech.js"></script>
+    <script src="/static/speak.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('start-btn').addEventListener('click', function() {
+                console.log("Starting recognition...");
+                recognition.start();
+            });
+        });
+    </script>
+</body>
+</html>
